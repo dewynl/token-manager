@@ -32,8 +32,6 @@ export const DashboardSidebar = (props) => {
 
   const { currentAddress } = useWeb3()
 
-  console.log('currentAddress', currentAddress)
-  
   const router = useRouter();
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
     defaultMatches: true,

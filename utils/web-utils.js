@@ -1,9 +1,6 @@
-
-
 import { providers } from "ethers";
 import Web3 from "web3";
 
-const web3 = new Web3(window.ethereum);
 
 async function getProviderOrSigner(web3ModalRef, needSigner = false) {
     const provider = await web3ModalRef.current.connect();
@@ -24,16 +21,19 @@ async function getProviderOrSigner(web3ModalRef, needSigner = false) {
 };
 
 
-export const getBalance = async (account) => {
-    return new Promise((resolve, reject) => {
-        web3.eth.getBalance(account, (err, result) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(web3.utils.fromWei(result, "ether"));
-            }
+function getAccountBalance(account) {
+    const web3 = new Web3(window.ethereum);
+    if(account){
+        return new Promise((resolve, reject) => {
+            web3.eth.getBalance(account, (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(web3.utils.fromWei(result, "ether"));
+                }
+            });
         });
-    });
+    }
 };
 
-export { getProviderOrSigner, getBalance };
+export { getProviderOrSigner, getAccountBalance };
