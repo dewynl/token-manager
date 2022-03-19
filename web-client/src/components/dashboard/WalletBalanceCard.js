@@ -9,8 +9,13 @@ export const WalletBalanceCard = (props) => {
   const [currentBalance, setCurrentBalance] = useState(undefined)
 
   useEffect(() => {
-    const balance = getAccountBalance(currentAddress)
-    setCurrentBalance(balance)
+    const updateBalance = async () => {
+      const balance = await getAccountBalance(currentAddress)
+      setCurrentBalance(balance)
+    }
+
+    updateBalance()
+
   }, [currentAddress])
 
   return <InfoCard title='Balance' value={`${currentBalance ? Number.parseFloat(currentBalance).toFixed(6) : '0'} eth`} icon={<AttachMoneyIcon />} {...props}  />;
