@@ -5,24 +5,24 @@ import { useWeb3 } from "../../context/web3State"
 import InfoCard from "../InfoCard"
 
 export const WalletBalanceCard = (props) => {
-   const { currentAddress } = useWeb3()
-   const [currentBalance, setCurrentBalance] = useState(undefined)
+	const { currentAddress } = useWeb3()
+	const [currentBalance, setCurrentBalance] = useState(undefined)
 
-   useEffect(() => {
-      const updateBalance = async () => {
-         const balance = await getAccountBalance(currentAddress, 6)
-         setCurrentBalance(balance)
-      }
+	useEffect(() => {
+		const updateBalance = async () => {
+			const balance = await getAccountBalance(currentAddress, 6)
+			setCurrentBalance(balance)
+		}
 
-      updateBalance()
-   }, [currentAddress])
+		updateBalance()
+	}, [currentAddress])
 
-   return (
-      <InfoCard
-         title="Balance"
-         value={`${currentBalance ? currentBalance : "0"} eth`}
-         icon={<AttachMoneyIcon />}
-         {...props}
-      />
-   )
+	return (
+		<InfoCard
+			title="Balance"
+			value={`${currentBalance ? currentBalance : "0"} eth`}
+			icon={<AttachMoneyIcon />}
+			{...props}
+		/>
+	)
 }
