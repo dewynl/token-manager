@@ -19,7 +19,7 @@ async function getProviderOrSigner(web3ModalRef, needSigner = false) {
    return web3Provider
 }
 
-function getAccountBalance(account) {
+function getAccountBalance(account, numberOfDecimals = undefined) {
    const web3 = new Web3(window.ethereum)
    if (account) {
       return new Promise((resolve, reject) => {
@@ -27,7 +27,12 @@ function getAccountBalance(account) {
             if (err) {
                reject(err)
             } else {
-               resolve(web3.utils.fromWei(result, "ether"))
+               const eth = web3.utils.fromWei(result, "ether")
+               if (numberOfDecimals) {
+                  resolve(Number.parseFloat(eth).toFixed(numberOfDecimals))
+               } else {
+                  resolve(eth)
+               }
             }
          })
       })

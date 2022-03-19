@@ -2,17 +2,18 @@ import PropTypes from "prop-types"
 import styled from "@emotion/styled"
 import {
    AppBar,
-   Avatar,
-   Badge,
    Box,
    IconButton,
    Toolbar,
    Tooltip,
+   Typography,
 } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
-import { Bell as BellIcon } from "../icons/bell"
-import { UserCircle as UserCircleIcon } from "../icons/user-circle"
-import { Users as UsersIcon } from "../icons/users"
+import { Coin } from "../icons/coin"
+import { useWeb3 } from "../context/web3State"
+import { useEffect, useState } from "react"
+import { getAccountBalance } from "../../utils/web-utils"
+import { useRouter } from "next/router"
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
    backgroundColor: theme.palette.background.paper,
@@ -21,6 +22,19 @@ const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
 
 export const DashboardNavbar = (props) => {
    const { onSidebarOpen, ...other } = props
+   const { currentAddress } = useWeb3()
+   const [currentBalance, setCurrentBalance] = useState(undefined)
+   const router = useRouter()
+   const shouldShowBalance = router.pathname !== "/"
+
+   useEffect(() => {
+      const updateBalance = async () => {
+         const balance = await getAccountBalance(currentAddress, 6)
+         setCurrentBalance(balance)
+      }
+
+      updateBalance()
+   }, [currentAddress])
 
    return (
       <>
@@ -52,27 +66,17 @@ export const DashboardNavbar = (props) => {
                   <MenuIcon fontSize="small" />
                </IconButton>
                <Box sx={{ flexGrow: 1 }} />
-               <Tooltip title="Contacts">
-                  <IconButton sx={{ ml: 1 }}>
-                     <UsersIcon fontSize="small" />
-                  </IconButton>
-               </Tooltip>
-               <Tooltip title="Notifications">
-                  <IconButton sx={{ ml: 1 }}>
-                     <Badge badgeContent={4} color="primary" variant="dot">
-                        <BellIcon fontSize="small" />
-                     </Badge>
-                  </IconButton>
-               </Tooltip>
-               <Avatar
-                  sx={{
-                     height: 40,
-                     width: 40,
-                     ml: 1,
-                  }}
-                  src="/static/images/avatars/avatar_1.png">
-                  <UserCircleIcon fontSize="small" />
-               </Avatar>
+
+               {shouldShowBalance && (
+                  <>
+                     <IconButton sx={{ ml: 1 }}>
+                        <Coin fontSize="small" />
+                     </IconButton>
+                     <Typography style={{ color: "black" }}>
+                        {currentBalance}
+                     </Typography>
+                  </>
+               )}
             </Toolbar>
          </DashboardNavbarRoot>
       </>

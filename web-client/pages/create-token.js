@@ -1,6 +1,6 @@
 import React from "react"
 import Head from "next/head"
-import { Box, Container, Grid } from "@mui/material"
+import { Box, Button, Container, Typography } from "@mui/material"
 import { DashboardLayout } from "../src/components/dashboard-layout"
 
 function CreateTokenPage() {
@@ -16,7 +16,22 @@ function CreateTokenPage() {
                py: 8,
             }}>
             <Container maxWidth={false}>
-               <Grid container spacing={3}></Grid>
+               <Box
+                  sx={{
+                     alignItems: "center",
+                     display: "flex",
+                     justifyContent: "space-between",
+                     flexWrap: "wrap",
+                     m: -1,
+                  }}>
+                  <Typography sx={{ m: 1 }} variant="h4">
+                     Tokens
+                  </Typography>
+                  <Button color="primary" variant="contained">
+                     Create Token
+                  </Button>
+               </Box>
+               <Box sx={{ m: 1 }}></Box>
             </Container>
          </Box>
       </>
