@@ -8,8 +8,8 @@ export const WalletBalanceCard = (props) => {
   const { currentAddress } = useWeb3()
   const [currentBalance, setCurrentBalance] = useState(undefined)
 
-  useEffect(async () => {
-    const balance = await getAccountBalance(currentAddress)
+  useEffect(() => {
+    const balance = getAccountBalance(currentAddress)
     setCurrentBalance(balance)
   }, [currentAddress])
 

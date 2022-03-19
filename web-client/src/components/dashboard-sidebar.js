@@ -48,7 +48,7 @@ export const DashboardSidebar = (props) => {
         onClose?.();
       }
     },
-    [router.asPath]
+    [router.asPath, onClose, open, router.isReady]
   );
 
   const content = (

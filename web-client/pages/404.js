@@ -2,6 +2,7 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 import { Box, Button, Container, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Image from 'next/image';
 
 const NotFound = () => (
   <>
@@ -42,15 +43,11 @@ const NotFound = () => (
             Oh no!
           </Typography>
           <Box sx={{ textAlign: 'center' }}>
-            <img
+            <Image
               alt="Under development"
               src="/static/images/undraw_page_not_found_su7k.svg"
-              style={{
-                marginTop: 50,
-                display: 'inline-block',
-                maxWidth: '100%',
-                width: 560
-              }}
+              width={560}
+              height={400}
             />
           </Box>
           <NextLink
