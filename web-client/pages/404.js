@@ -1,8 +1,8 @@
-import Head from "next/head";
-import NextLink from "next/link";
-import { Box, Button, Container, Typography } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Image from "next/image";
+import Head from "next/head"
+import NextLink from "next/link"
+import { Box, Button, Container, Typography } from "@mui/material"
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"
+import Image from "next/image"
 
 const NotFound = () => (
    <>
@@ -16,24 +16,21 @@ const NotFound = () => (
             display: "flex",
             flexGrow: 1,
             minHeight: "100%",
-         }}
-      >
+         }}>
          <Container maxWidth="md">
             <Box
                sx={{
                   alignItems: "center",
                   display: "flex",
                   flexDirection: "column",
-               }}
-            >
+               }}>
                <Typography align="center" color="textPrimary" variant="h1">
                   404: The page you are looking for isn’t here
                </Typography>
                <Typography
                   align="center"
                   color="textPrimary"
-                  variant="subtitle2"
-               >
+                  variant="subtitle2">
                   Oh no!
                </Typography>
                <Box sx={{ textAlign: "center" }}>
@@ -49,8 +46,7 @@ const NotFound = () => (
                      component="a"
                      startIcon={<ArrowBackIcon fontSize="small" />}
                      sx={{ mt: 3 }}
-                     variant="contained"
-                  >
+                     variant="contained">
                      Go back to dashboard
                   </Button>
                </NextLink>
@@ -58,6 +54,6 @@ const NotFound = () => (
          </Container>
       </Box>
    </>
-);
+)
 
-export default NotFound;
+export default NotFound

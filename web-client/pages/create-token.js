@@ -1,7 +1,7 @@
-import React from "react";
-import Head from "next/head";
-import { Box, Container, Grid } from "@mui/material";
-import { DashboardLayout } from "../src/components/dashboard-layout";
+import React from "react"
+import Head from "next/head"
+import { Box, Container, Grid } from "@mui/material"
+import { DashboardLayout } from "../src/components/dashboard-layout"
 
 function CreateTokenPage() {
    return (
@@ -14,16 +14,15 @@ function CreateTokenPage() {
             sx={{
                flexGrow: 1,
                py: 8,
-            }}
-         >
+            }}>
             <Container maxWidth={false}>
                <Grid container spacing={3}></Grid>
             </Container>
          </Box>
       </>
-   );
+   )
 }
 
-CreateTokenPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
+CreateTokenPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>
 
-export default CreateTokenPage;
+export default CreateTokenPage

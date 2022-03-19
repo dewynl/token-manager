@@ -1,23 +1,19 @@
-import Head from "next/head";
-import { theme } from "../src/theme";
-import { CacheProvider } from "@emotion/react";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { createEmotionCache } from "../utils/create-emotion-cache";
-import { Web3Provider } from "../src/context/web3State";
+import Head from "next/head"
+import { theme } from "../src/theme"
+import { CacheProvider } from "@emotion/react"
+import LocalizationProvider from "@mui/lab/LocalizationProvider"
+import AdapterDateFns from "@mui/lab/AdapterDateFns"
+import { CssBaseline } from "@mui/material"
+import { ThemeProvider } from "@mui/material/styles"
+import { createEmotionCache } from "../utils/create-emotion-cache"
+import { Web3Provider } from "../src/context/web3State"
 
-const clientSideEmotionCache = createEmotionCache();
+const clientSideEmotionCache = createEmotionCache()
 
 function App(props) {
-   const {
-      Component,
-      emotionCache = clientSideEmotionCache,
-      pageProps,
-   } = props;
+   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
-   const getLayout = Component.getLayout ?? ((page) => page);
+   const getLayout = Component.getLayout ?? ((page) => page)
 
    return (
       <CacheProvider value={emotionCache}>
@@ -37,7 +33,7 @@ function App(props) {
             </ThemeProvider>
          </LocalizationProvider>
       </CacheProvider>
-   );
+   )
 }
 
-export default App;
+export default App

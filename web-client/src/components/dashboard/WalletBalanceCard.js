@@ -1,21 +1,21 @@
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import { useEffect, useState } from "react";
-import { getAccountBalance } from "../../../utils/web-utils";
-import { useWeb3 } from "../../context/web3State";
-import InfoCard from "../InfoCard";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
+import { useEffect, useState } from "react"
+import { getAccountBalance } from "../../../utils/web-utils"
+import { useWeb3 } from "../../context/web3State"
+import InfoCard from "../InfoCard"
 
 export const WalletBalanceCard = (props) => {
-   const { currentAddress } = useWeb3();
-   const [currentBalance, setCurrentBalance] = useState(undefined);
+   const { currentAddress } = useWeb3()
+   const [currentBalance, setCurrentBalance] = useState(undefined)
 
    useEffect(() => {
       const updateBalance = async () => {
-         const balance = await getAccountBalance(currentAddress);
-         setCurrentBalance(balance);
-      };
+         const balance = await getAccountBalance(currentAddress)
+         setCurrentBalance(balance)
+      }
 
-      updateBalance();
-   }, [currentAddress]);
+      updateBalance()
+   }, [currentAddress])
 
    return (
       <InfoCard
@@ -26,5 +26,5 @@ export const WalletBalanceCard = (props) => {
          icon={<AttachMoneyIcon />}
          {...props}
       />
-   );
-};
+   )
+}

@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material"
 
 export const theme = createTheme({
    breakpoints: {
@@ -297,4 +297,4 @@ export const theme = createTheme({
          lineHeight: 1.375,
       },
    },
-});
+})

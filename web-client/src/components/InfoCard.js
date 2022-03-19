@@ -1,4 +1,4 @@
-import { Avatar, Card, CardContent, Grid, Typography } from "@mui/material";
+import { Avatar, Card, CardContent, Grid, Typography } from "@mui/material"
 
 const InfoCard = ({ title, value, icon, ...props }) => {
    return (
@@ -7,14 +7,12 @@ const InfoCard = ({ title, value, icon, ...props }) => {
             <Grid
                container
                spacing={3}
-               sx={{ justifyContent: "space-between" }}
-            >
+               sx={{ justifyContent: "space-between" }}>
                <Grid item>
                   <Typography
                      color="textSecondary"
                      gutterBottom
-                     variant="overline"
-                  >
+                     variant="overline">
                      {title}
                   </Typography>
                   <Typography color="textPrimary" variant="h4">
@@ -27,15 +25,14 @@ const InfoCard = ({ title, value, icon, ...props }) => {
                         backgroundColor: "primary.main",
                         height: 56,
                         width: 56,
-                     }}
-                  >
+                     }}>
                      {icon}
                   </Avatar>
                </Grid>
             </Grid>
          </CardContent>
       </Card>
-   );
-};
+   )
+}
 
-export default InfoCard;
+export default InfoCard

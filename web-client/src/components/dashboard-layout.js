@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { DashboardNavbar } from "./dashboard-navbar";
-import { DashboardSidebar } from "./dashboard-sidebar";
+import { useState } from "react"
+import { Box } from "@mui/material"
+import { styled } from "@mui/material/styles"
+import { DashboardNavbar } from "./dashboard-navbar"
+import { DashboardSidebar } from "./dashboard-sidebar"
 
 const DashboardLayoutRoot = styled("div")(({ theme }) => ({
    display: "flex",
@@ -12,12 +12,12 @@ const DashboardLayoutRoot = styled("div")(({ theme }) => ({
    [theme.breakpoints.up("lg")]: {
       paddingLeft: 280,
    },
-}));
+}))
 
 export const DashboardLayout = (props) => {
-   const { children } = props;
+   const { children } = props
 
-   const [isSidebarOpen, setSidebarOpen] = useState(true);
+   const [isSidebarOpen, setSidebarOpen] = useState(true)
 
    return (
       <>
@@ -28,8 +28,7 @@ export const DashboardLayout = (props) => {
                   flex: "1 1 auto",
                   flexDirection: "column",
                   width: "100%",
-               }}
-            >
+               }}>
                {children}
             </Box>
          </DashboardLayoutRoot>
@@ -39,5 +38,5 @@ export const DashboardLayout = (props) => {
             open={isSidebarOpen}
          />
       </>
-   );
-};
+   )
+}

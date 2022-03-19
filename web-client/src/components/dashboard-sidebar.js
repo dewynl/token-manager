@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import PropTypes from "prop-types";
-import { Box, Divider, Drawer, Typography, useMediaQuery } from "@mui/material";
-import { ChartBar as ChartBarIcon } from "../icons/chart-bar";
-import { ShoppingBag as ShoppingBagIcon } from "../icons/shopping-bag";
-import { NavItem } from "./nav-item";
-import { truncate } from "../../utils/truncate-address";
-import { useWeb3 } from "../context/web3State";
-import { Coin } from "../icons/coin";
+import { useEffect } from "react"
+import { useRouter } from "next/router"
+import PropTypes from "prop-types"
+import { Box, Divider, Drawer, Typography, useMediaQuery } from "@mui/material"
+import { ChartBar as ChartBarIcon } from "../icons/chart-bar"
+import { ShoppingBag as ShoppingBagIcon } from "../icons/shopping-bag"
+import { NavItem } from "./nav-item"
+import { truncate } from "../../utils/truncate-address"
+import { useWeb3 } from "../context/web3State"
+import { Coin } from "../icons/coin"
 
 const items = [
    {
@@ -25,28 +25,28 @@ const items = [
       icon: <ShoppingBagIcon fontSize="small" />,
       title: "Contracts",
    },
-];
+]
 
 export const DashboardSidebar = (props) => {
-   const { open, onClose } = props;
+   const { open, onClose } = props
 
-   const { currentAddress } = useWeb3();
+   const { currentAddress } = useWeb3()
 
-   const router = useRouter();
+   const router = useRouter()
    const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
       defaultMatches: true,
       noSsr: false,
-   });
+   })
 
    useEffect(() => {
       if (!router.isReady) {
-         return;
+         return
       }
 
       if (open) {
-         onClose?.();
+         onClose?.()
       }
-   }, [router.asPath, onClose, open, router.isReady]);
+   }, [router.asPath, onClose, open, router.isReady])
 
    const content = (
       <>
@@ -55,8 +55,7 @@ export const DashboardSidebar = (props) => {
                display: "flex",
                flexDirection: "column",
                height: "100%",
-            }}
-         >
+            }}>
             <div>
                <Box sx={{ p: 3, px: 2 }}>
                   <Box
@@ -69,8 +68,7 @@ export const DashboardSidebar = (props) => {
                         px: 3,
                         py: "11px",
                         borderRadius: 1,
-                     }}
-                  >
+                     }}>
                      <div>
                         <Typography color="inherit" variant="subtitle1">
                            Connected Wallet
@@ -101,7 +99,7 @@ export const DashboardSidebar = (props) => {
             <Divider sx={{ borderColor: "#2D3748" }} />
          </Box>
       </>
-   );
+   )
 
    if (lgUp) {
       return (
@@ -115,11 +113,10 @@ export const DashboardSidebar = (props) => {
                   width: 280,
                },
             }}
-            variant="permanent"
-         >
+            variant="permanent">
             {content}
          </Drawer>
-      );
+      )
    }
 
    return (
@@ -135,14 +132,13 @@ export const DashboardSidebar = (props) => {
             },
          }}
          sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
-         variant="temporary"
-      >
+         variant="temporary">
          {content}
       </Drawer>
-   );
-};
+   )
+}
 
 DashboardSidebar.propTypes = {
    onClose: PropTypes.func,
    open: PropTypes.bool,
-};
+}

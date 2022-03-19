@@ -1,11 +1,10 @@
-import { createSvgIcon } from "@mui/material/utils";
+import { createSvgIcon } from "@mui/material/utils"
 
 export const UserCircle = createSvgIcon(
    <svg
       viewBox="0 0 20 20"
       fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-   >
+      xmlns="http://www.w3.org/2000/svg">
       <path
          fillRule="evenodd"
          clipRule="evenodd"
@@ -13,4 +12,4 @@ export const UserCircle = createSvgIcon(
       />
    </svg>,
    "UserCircle"
-);
+)
